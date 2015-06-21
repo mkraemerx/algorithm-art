@@ -1,7 +1,5 @@
 package de.postlab.alg.countingsort;
 
-import de.postlab.alg.Sortable;
-
 /**
  * AlgorithmArt - A collection of algorithm implementations,
  * tests and profiling programs to research the algorithms.
@@ -22,19 +20,19 @@ import de.postlab.alg.Sortable;
  * GNU General Public License for more details.
  * <p>
  * You should have received a copy of the GNU General Public License
- * along with Foobar. If not, see <http://www.gnu.org/licenses/>.
+ * along with AlgorithmArt. If not, see <http://www.gnu.org/licenses/>.
  * <p>
  * Initially created by michel on 20.05.15.
  */
-public class StdCountingSort {
+public class StdCountingSortSmpl {
 
-    Sortable[] arr;
+    int[] arr;
 
-    public StdCountingSort(Sortable[] arr) {
+    public StdCountingSortSmpl(int[] arr) {
         this.arr = arr;
     }
 
-    public Sortable[] sort(int maxKey) {
+    public int[] sort(int maxKey) {
         int[] key = new int[maxKey+1];
         for (int i=0; i<=maxKey; i++) {
             key[i] = 0;
@@ -42,7 +40,7 @@ public class StdCountingSort {
 
         // count occurences in input data
         for (int i=0; i<arr.length; ++i) {
-            key[arr[i].getKey()]++;
+            key[arr[i]]++;
         }
 
         int tmp = 0;
