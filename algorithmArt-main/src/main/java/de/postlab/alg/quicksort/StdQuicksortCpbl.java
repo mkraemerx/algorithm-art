@@ -39,9 +39,13 @@ public class StdQuicksortCpbl {
         helper = new SortDebugHelper();
     }
 
+    public void sort(ComparableNumber[] arr) {
+        quicksort(arr, 0, arr.length - 1);
+    }
+
     public void quicksort(ComparableNumber[] arr, int lo, int hi) {
         helper.depthIncrease();
-        if (log.isTraceEnabled()) log.trace("quicksort "+ lo +" - "+ hi +" - depth "+ helper.depth);
+        if (log.isTraceEnabled()) log.trace("quicksort " + lo + " - " + hi + " - depth " + helper.depth);
         if (lo < hi) {
             int mid = partition(arr, lo, hi);
             quicksort(arr, lo, mid-1);

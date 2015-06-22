@@ -32,6 +32,10 @@ import org.testng.annotations.Test;
  */
 public class StdQuicksortCpblTest {
 
+    private StdQuicksortCpbl createSorter() {
+        return new StdQuicksortCpbl();
+    }
+
     @Test()
     public void quicksort200_random() {
 
@@ -40,8 +44,8 @@ public class StdQuicksortCpblTest {
         EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int200_random.txt");
         int c = arr.length;
 
-        StdQuicksortCpbl sorter = new StdQuicksortCpbl();
-        sorter.quicksort(arr, 0, arr.length - 1);
+        StdQuicksortCpbl sorter = createSorter();
+        sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
@@ -65,8 +69,8 @@ public class StdQuicksortCpblTest {
         EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int2000_random.txt");
         int c = arr.length;
 
-        StdQuicksortCpbl sorter = new StdQuicksortCpbl();
-        sorter.quicksort(arr, 0, arr.length - 1);
+        StdQuicksortCpbl sorter = createSorter();
+        sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
@@ -90,8 +94,8 @@ public class StdQuicksortCpblTest {
         EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int200_equal.txt");
         int c = arr.length;
 
-        StdQuicksortCpbl sorter = new StdQuicksortCpbl();
-        sorter.quicksort(arr, 0, arr.length - 1);
+        StdQuicksortCpbl sorter = createSorter();
+        sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
@@ -115,8 +119,8 @@ public class StdQuicksortCpblTest {
         EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int200_sorted.txt");
         int c = arr.length;
 
-        StdQuicksortCpbl sorter = new StdQuicksortCpbl();
-        sorter.quicksort(arr, 0, arr.length - 1);
+        StdQuicksortCpbl sorter = createSorter();
+        sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
