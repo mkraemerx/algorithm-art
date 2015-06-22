@@ -38,6 +38,10 @@ public class StdQuicksortSmpl {
         helper = new SortDebugHelper();
     }
 
+    public void sort(int[] arr) {
+        quicksort(arr, 0, arr.length - 1);
+    }
+
     public void quicksort(int[] arr, int lo, int hi) {
         helper.depthIncrease();
         if (log.isTraceEnabled()) log.trace("quicksort " + lo + " - " + hi + " - depth " + helper.depth);

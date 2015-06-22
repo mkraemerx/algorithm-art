@@ -31,6 +31,10 @@ import org.testng.annotations.Test;
  */
 public class TailRecursiveQuicksortSmplTest {
 
+    private StdQuicksortSmpl createSorter() {
+        return new StdQuicksortSmpl();
+    }
+    
     @Test()
     public void quicksort200_random() {
 
@@ -39,8 +43,8 @@ public class TailRecursiveQuicksortSmplTest {
         int[] arr = reader.readFileAsInt("/sort-data/int200_random.txt");
         int c = arr.length;
 
-        TailRecursiveQuicksortSmpl sorter = new TailRecursiveQuicksortSmpl();
-        sorter.quicksort(arr, 0, arr.length - 1);
+        StdQuicksortSmpl sorter = createSorter();
+        sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
@@ -64,8 +68,8 @@ public class TailRecursiveQuicksortSmplTest {
         int[] arr = reader.readFileAsInt("/sort-data/int2000_random.txt");
         int c = arr.length;
 
-        TailRecursiveQuicksortSmpl sorter = new TailRecursiveQuicksortSmpl();
-        sorter.quicksort(arr, 0, arr.length - 1);
+        StdQuicksortSmpl sorter = createSorter();
+        sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
@@ -88,8 +92,8 @@ public class TailRecursiveQuicksortSmplTest {
         int[] arr = reader.readFileAsInt("/sort-data/int200_equal.txt");
         int c = arr.length;
 
-        TailRecursiveQuicksortSmpl sorter = new TailRecursiveQuicksortSmpl();
-        sorter.quicksort(arr, 0, arr.length - 1);
+        StdQuicksortSmpl sorter = createSorter();
+        sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
@@ -113,8 +117,8 @@ public class TailRecursiveQuicksortSmplTest {
         int[] arr = reader.readFileAsInt("/sort-data/int200_sorted.txt");
         int c = arr.length;
 
-        TailRecursiveQuicksortSmpl sorter = new TailRecursiveQuicksortSmpl();
-        sorter.quicksort(arr, 0, arr.length - 1);
+        StdQuicksortSmpl sorter = createSorter();
+        sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
