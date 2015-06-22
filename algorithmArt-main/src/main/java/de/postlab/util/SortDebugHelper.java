@@ -1,4 +1,4 @@
-package de.postlab.alg.quicksort;
+package de.postlab.util;
 
 import de.postlab.util.ArrayPrinter;
 import lombok.Data;
@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Data
-public class QuicksortHelper {
+public class SortDebugHelper {
     // those props are public since this software is for research
     public int p_count = 0;
     public int depth = 0;
@@ -51,15 +51,16 @@ public class QuicksortHelper {
         return log.isDebugEnabled();
     }
 
-    public void print_debug_stuff(Comparable[] arr, int lo, int hi, int i_or_end, int j) {
-        print_debug_stuff(arr, lo, hi, i_or_end, j, false);
+    /* **** DEBUG HELPERS FOR QUICKSORT **** */
+    public void print_quicksort_debug_stuff(ComparableNumber[] arr, int lo, int hi, int i_or_end, int j) {
+        print_quicksort_debug_stuff(arr, lo, hi, i_or_end, j, false);
     }
 
-    public void print_trace_stuff(Comparable[] arr, int lo, int hi, int i_or_end, int j) {
-        print_debug_stuff(arr, lo, hi, i_or_end, j, true);
+    public void print_quicksort_trace_stuff(ComparableNumber[] arr, int lo, int hi, int i_or_end, int j) {
+        print_quicksort_debug_stuff(arr, lo, hi, i_or_end, j, true);
     }
 
-    private void print_debug_stuff(Comparable[] arr, int lo, int hi, int i_or_end, int j, boolean traceOnly) {
+    private void print_quicksort_debug_stuff(ComparableNumber[] arr, int lo, int hi, int i_or_end, int j, boolean traceOnly) {
         if (!log.isDebugEnabled()) {
             return;
         }
@@ -90,15 +91,15 @@ public class QuicksortHelper {
         }
     }
 
-    public void print_debug_stuff(int[] arr, int lo, int hi, int i_or_end, int j) {
-        print_debug_stuff(arr, lo, hi, i_or_end, j, false);
+    public void print_quicksort_debug_stuff(int[] arr, int lo, int hi, int i_or_end, int j) {
+        print_quicksort_debug_stuff(arr, lo, hi, i_or_end, j, false);
     }
 
-    public void print_trace_stuff(int[] arr, int lo, int hi, int i_or_end, int j) {
-        print_debug_stuff(arr, lo, hi, i_or_end, j, true);
+    public void print_quicksort_trace_stuff(int[] arr, int lo, int hi, int i_or_end, int j) {
+        print_quicksort_debug_stuff(arr, lo, hi, i_or_end, j, true);
     }
 
-    private void print_debug_stuff(int[] arr, int lo, int hi, int i_or_end, int j, boolean traceOnly) {
+    private void print_quicksort_debug_stuff(int[] arr, int lo, int hi, int i_or_end, int j, boolean traceOnly) {
         if (!log.isDebugEnabled()) {
             return;
         }

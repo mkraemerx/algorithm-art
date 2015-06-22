@@ -1,9 +1,6 @@
 package de.postlab.util;
 
 import java.text.DecimalFormat;
-import java.text.FieldPosition;
-import java.text.NumberFormat;
-import java.text.ParsePosition;
 
 /**
  * AlgorithmArt - A collection of algorithm implementations,
@@ -40,10 +37,10 @@ public class ArrayPrinter {
         fmt = new DecimalFormat(format);
     }
 
-    public String printArray(Object[] arr) {
+    public String printArray(ComparableNumber[] arr) {
         StringBuffer sb = new StringBuffer("[");
         for (int i=0; i<arr.length; ++i) {
-            sb.append(fmt.format(arr[i])).append(", ");
+            sb.append(fmt.format(arr[i].getValue())).append(", ");
         }
         sb.delete(sb.length()-2, sb.length());
         sb.append("]");

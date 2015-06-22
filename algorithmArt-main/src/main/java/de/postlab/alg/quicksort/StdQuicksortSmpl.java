@@ -1,5 +1,6 @@
 package de.postlab.alg.quicksort;
 
+import de.postlab.util.SortDebugHelper;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,10 +32,10 @@ import lombok.extern.slf4j.Slf4j;
 public class StdQuicksortSmpl {
 
     @Getter
-    private QuicksortHelper helper;
+    private SortDebugHelper helper;
 
     public StdQuicksortSmpl() {
-        helper = new QuicksortHelper();
+        helper = new SortDebugHelper();
     }
 
     public void quicksort(int[] arr, int lo, int hi) {
@@ -56,7 +57,7 @@ public class StdQuicksortSmpl {
         int x = arr[hi];
         for (int i=lo; i<hi; ++i) {
             if (helper.isDebug()) {
-                helper.print_trace_stuff(arr, lo, hi, i, j);
+                helper.print_quicksort_trace_stuff(arr, lo, hi, i, j);
             }
             if (arr[i] <= x) {
                 swap = arr[j];
@@ -67,7 +68,7 @@ public class StdQuicksortSmpl {
         arr[hi] = arr[j];
         arr[j] = x;
         if (helper.isDebug()) {
-            helper.print_trace_stuff(arr, lo, hi, hi, j);
+            helper.print_quicksort_trace_stuff(arr, lo, hi, hi, j);
         }
         return j;
     }

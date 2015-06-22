@@ -1,4 +1,4 @@
-package de.postlab.util;
+package de.postlab.alg.util;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -65,7 +65,30 @@ public class ArrayReader {
     }
 
     /**
-     * grow the int array by 1.5 + copy data
+     * reads a whole file of space separated integers and stores them in an exactly sized array
+     * @param filename
+     * @return
+     */
+    public EnrichedInt[] readFileAsObjects(String filename) {
+        Scanner scanner = new Scanner(getClass().getResourceAsStream(filename));
+        int c = 0;
+        EnrichedInt[] data = new EnrichedInt[initialCapacity];
+
+        while(scanner.hasNextInt()) {
+            if (c >= data.length) {
+                data = grow(data);
+            }
+            EnrichedInt eInt = new EnrichedInt((long)c, scanner.nextInt());
+            data[c] = eInt;
+            ++c;
+        }
+        data = shrink(data, c);
+        return data;
+
+    }
+
+    /**
+     * grow the array by 1.5 + copy data
      * @param data
      * @return
      */
@@ -81,6 +104,22 @@ public class ArrayReader {
     }
 
     /**
+     * grow the array by 1.5 + copy data
+     * @param data
+     * @return
+     */
+    private EnrichedInt[] grow(EnrichedInt[] data) {
+        int newCapacity = data.length + (data.length >> 1);
+        log.trace("re-sizing to "+ newCapacity);
+
+        EnrichedInt[] newData = new EnrichedInt[newCapacity];
+        for (int i=0; i<data.length; ++i) {
+            newData[i] = data[i];
+        }
+        return newData;
+    }
+
+    /**
      * shrink array to specified size
      * @param data
      * @param size
@@ -88,6 +127,20 @@ public class ArrayReader {
      */
     private int[] shrink(int[] data, int size) {
         int[] newData = new int[size];
+        for (int i=0; i<size; ++i) {
+            newData[i] = data[i];
+        }
+        return newData;
+    }
+
+    /**
+     * shrink array to specified size
+     * @param data
+     * @param size
+     * @return
+     */
+    private EnrichedInt[] shrink(EnrichedInt[] data, int size) {
+        EnrichedInt[] newData = new EnrichedInt[size];
         for (int i=0; i<size; ++i) {
             newData[i] = data[i];
         }

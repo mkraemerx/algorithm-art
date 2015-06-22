@@ -1,7 +1,7 @@
 package de.postlab.alg.quicksort;
 
 import de.postlab.util.ArrayPrinter;
-import de.postlab.util.ArrayReader;
+import de.postlab.alg.util.ArrayReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

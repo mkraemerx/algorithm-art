@@ -1,5 +1,6 @@
 package de.postlab.alg.quicksort;
 
+import de.postlab.alg.util.EnrichedInt;
 import de.postlab.util.ArrayPrinter;
 import de.postlab.alg.util.ArrayReader;
 import org.testng.Assert;
@@ -27,26 +28,26 @@ import org.testng.annotations.Test;
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <http://www.gnu.org/licenses/>.
  * <p>
- * Initially created by michel on 18.05.15.
+ * Initially created by michel on 21.06.15.
  */
-public class StdQuicksortSmplTest {
+public class StdQuicksortCpblTest {
 
     @Test()
     public void quicksort200_random() {
 
         // read input data
         ArrayReader reader = new ArrayReader();
-        int[] arr = reader.readFileAsInt("/sort-data/int200_random.txt");
+        EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int200_random.txt");
         int c = arr.length;
 
-        StdQuicksortSmpl sorter = new StdQuicksortSmpl();
+        StdQuicksortCpbl sorter = new StdQuicksortCpbl();
         sorter.quicksort(arr, 0, arr.length - 1);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1] <= arr[i]);
+            Assert.assertTrue(arr[i-1].getValue() <= arr[i].getValue());
         }
 
         System.out.println("***************************************");
@@ -61,17 +62,17 @@ public class StdQuicksortSmplTest {
 
         // read input data
         ArrayReader reader = new ArrayReader();
-        int[] arr = reader.readFileAsInt("/sort-data/int2000_random.txt");
+        EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int2000_random.txt");
         int c = arr.length;
 
-        StdQuicksortSmpl sorter = new StdQuicksortSmpl();
+        StdQuicksortCpbl sorter = new StdQuicksortCpbl();
         sorter.quicksort(arr, 0, arr.length - 1);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1] <= arr[i]);
+            Assert.assertTrue(arr[i-1].getValue() <= arr[i].getValue());
         }
 
         System.out.println("***************************************");
@@ -86,17 +87,17 @@ public class StdQuicksortSmplTest {
 
         // read input data
         ArrayReader reader = new ArrayReader();
-        int[] arr = reader.readFileAsInt("/sort-data/int200_equal.txt");
+        EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int200_equal.txt");
         int c = arr.length;
 
-        StdQuicksortSmpl sorter = new StdQuicksortSmpl();
+        StdQuicksortCpbl sorter = new StdQuicksortCpbl();
         sorter.quicksort(arr, 0, arr.length - 1);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1] <= arr[i]);
+            Assert.assertTrue(arr[i-1].getValue() <= arr[i].getValue());
         }
 
         System.out.println("***************************************");
@@ -111,17 +112,17 @@ public class StdQuicksortSmplTest {
 
         // read input data
         ArrayReader reader = new ArrayReader();
-        int[] arr = reader.readFileAsInt("/sort-data/int200_sorted.txt");
+        EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int200_sorted.txt");
         int c = arr.length;
 
-        StdQuicksortSmpl sorter = new StdQuicksortSmpl();
+        StdQuicksortCpbl sorter = new StdQuicksortCpbl();
         sorter.quicksort(arr, 0, arr.length - 1);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1] <= arr[i]);
+            Assert.assertTrue(arr[i-1].getValue() <= arr[i].getValue());
         }
 
         System.out.println("***************************************");

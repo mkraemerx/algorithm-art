@@ -1,5 +1,7 @@
 package de.postlab.alg.quicksort;
 
+import de.postlab.util.ComparableNumber;
+import de.postlab.util.SortDebugHelper;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,15 +33,15 @@ import lombok.extern.slf4j.Slf4j;
 public class StdQuicksortCpbl {
 
     @Getter
-    private QuicksortHelper helper;
+    private SortDebugHelper helper;
 
     public StdQuicksortCpbl() {
-        helper = new QuicksortHelper();
+        helper = new SortDebugHelper();
     }
 
-    public void quicksort(Comparable[] arr, int lo, int hi) {
+    public void quicksort(ComparableNumber[] arr, int lo, int hi) {
         helper.depthIncrease();
-        if (log.isDebugEnabled()) log.debug("quicksort "+ lo +" - "+ hi +" - depth "+ helper.depth);
+        if (log.isTraceEnabled()) log.trace("quicksort "+ lo +" - "+ hi +" - depth "+ helper.depth);
         if (lo < hi) {
             int mid = partition(arr, lo, hi);
             quicksort(arr, lo, mid-1);
@@ -48,15 +50,15 @@ public class StdQuicksortCpbl {
         helper.depthDecrease();
     }
 
-    private int partition(Comparable[] arr, int lo, int hi) {
+    private int partition(ComparableNumber[] arr, int lo, int hi) {
         helper.p_count++;
 
         int j=lo;
-        Comparable swap = null;
-        Comparable x = arr[hi];
+        ComparableNumber swap = null;
+        ComparableNumber x = arr[hi];
         for (int i=lo; i<hi; ++i) {
             if (helper.isDebug()) {
-                helper.print_trace_stuff(arr, lo, hi, i, j);
+                helper.print_quicksort_trace_stuff(arr, lo, hi, i, j);
             }
             if (arr[i].compareTo(x) <= 0 ) {
                 swap = arr[j];
@@ -67,7 +69,7 @@ public class StdQuicksortCpbl {
         arr[hi] = arr[j];
         arr[j] = x;
         if (helper.isDebug()) {
-            helper.print_debug_stuff(arr, lo, hi, hi, j);
+            helper.print_quicksort_trace_stuff(arr, lo, hi, hi, j);
         }
         return j;
     }
