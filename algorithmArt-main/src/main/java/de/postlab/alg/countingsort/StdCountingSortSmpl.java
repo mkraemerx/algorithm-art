@@ -24,31 +24,26 @@ package de.postlab.alg.countingsort;
  * <p>
  * Initially created by michel on 20.05.15.
  */
-public class StdCountingSortSmpl {
+public class StdCountingsortSmpl {
 
-    int[] arr;
-
-    public StdCountingSortSmpl(int[] arr) {
-        this.arr = arr;
-    }
-
-    public int[] sort(int maxKey) {
+    public void sort(int[] data, int maxKey) {
         int[] key = new int[maxKey+1];
         for (int i=0; i<=maxKey; i++) {
             key[i] = 0;
         }
 
         // count occurences in input data
-        for (int i=0; i<arr.length; ++i) {
-            key[arr[i]]++;
+        for (int i=0; i<data.length; ++i) {
+            key[data[i]]++;
         }
 
-        int tmp = 0;
+        int t = 0;
         for (int i=0; i<=maxKey; i++) {
-            tmp = key[i];
-
+            for (int n=0; n<key[i]; n++) {
+                data[t] = i; // set value i n times
+                ++t;
+            }
         }
-        return null;
     }
 
 }
