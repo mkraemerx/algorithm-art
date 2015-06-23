@@ -1,4 +1,4 @@
-package de.postlab.util;
+package de.postlab.alg.util;
 
 import java.text.DecimalFormat;
 

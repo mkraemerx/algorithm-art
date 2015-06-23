@@ -1,7 +1,6 @@
-package de.postlab.alg.quicksort;
+package de.postlab.alg.comparisonsort.quicksort;
 
-import de.postlab.alg.util.EnrichedInt;
-import de.postlab.util.ArrayPrinter;
+import de.postlab.alg.util.ArrayPrinter;
 import de.postlab.alg.util.ArrayReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,32 +25,32 @@ import org.testng.annotations.Test;
  * GNU General Public License for more details.
  * <p>
  * You should have received a copy of the GNU General Public License
- * along with Foobar. If not, see <http://www.gnu.org/licenses/>.
+ * along with AlgorithmArt. If not, see <http://www.gnu.org/licenses/>.
  * <p>
- * Initially created by michel on 21.06.15.
+ * Initially created by michel on 18.05.15.
  */
-public class StdQuicksortCpblTest {
+public class TailRecursiveQuicksortSmplTest {
 
-    private StdQuicksortCpbl createSorter() {
-        return new StdQuicksortCpbl();
+    private StdQuicksortSmpl createSorter() {
+        return new StdQuicksortSmpl();
     }
-
+    
     @Test()
     public void quicksort200_random() {
 
         // read input data
         ArrayReader reader = new ArrayReader();
-        EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int200_random.txt");
+        int[] arr = reader.readFileAsInt("/sort-data/int200_random.txt");
         int c = arr.length;
 
-        StdQuicksortCpbl sorter = createSorter();
+        StdQuicksortSmpl sorter = createSorter();
         sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1].getValue() <= arr[i].getValue());
+            Assert.assertTrue(arr[i - 1] <= arr[i]);
         }
 
         System.out.println("***************************************");
@@ -66,17 +65,17 @@ public class StdQuicksortCpblTest {
 
         // read input data
         ArrayReader reader = new ArrayReader();
-        EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int2000_random.txt");
+        int[] arr = reader.readFileAsInt("/sort-data/int2000_random.txt");
         int c = arr.length;
 
-        StdQuicksortCpbl sorter = createSorter();
+        StdQuicksortSmpl sorter = createSorter();
         sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1].getValue() <= arr[i].getValue());
+            Assert.assertTrue(arr[i - 1] <= arr[i]);
         }
 
         System.out.println("***************************************");
@@ -85,23 +84,22 @@ public class StdQuicksortCpblTest {
         System.out.println("sorted list of "+ c +" - partition ran " + sorter.getHelper().getP_count() + " times, max depth " + sorter.getHelper().getMax_depth());
         System.out.println();
     }
-
     @Test()
     public void quicksort200_equal() {
 
         // read input data
         ArrayReader reader = new ArrayReader();
-        EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int200_equal.txt");
+        int[] arr = reader.readFileAsInt("/sort-data/int200_equal.txt");
         int c = arr.length;
 
-        StdQuicksortCpbl sorter = createSorter();
+        StdQuicksortSmpl sorter = createSorter();
         sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1].getValue() <= arr[i].getValue());
+            Assert.assertTrue(arr[i-1] <= arr[i]);
         }
 
         System.out.println("***************************************");
@@ -116,17 +114,17 @@ public class StdQuicksortCpblTest {
 
         // read input data
         ArrayReader reader = new ArrayReader();
-        EnrichedInt[] arr = reader.readFileAsObjects("/sort-data/int200_sorted.txt");
+        int[] arr = reader.readFileAsInt("/sort-data/int200_sorted.txt");
         int c = arr.length;
 
-        StdQuicksortCpbl sorter = createSorter();
+        StdQuicksortSmpl sorter = createSorter();
         sorter.sort(arr);
 
         ArrayPrinter p = new ArrayPrinter();
         System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1].getValue() <= arr[i].getValue());
+            Assert.assertTrue(arr[i-1] <= arr[i]);
         }
 
         System.out.println("***************************************");

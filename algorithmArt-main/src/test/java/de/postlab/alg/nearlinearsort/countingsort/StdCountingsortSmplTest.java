@@ -1,8 +1,7 @@
-package de.postlab.alg.countingsort;
+package de.postlab.alg.nearlinearsort.countingsort;
 
-import de.postlab.alg.quicksort.StdQuicksortSmpl;
 import de.postlab.alg.util.ArrayReader;
-import de.postlab.util.ArrayPrinter;
+import de.postlab.alg.util.ArrayPrinter;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

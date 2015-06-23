@@ -1,6 +1,5 @@
 package de.postlab.alg.util;
 
-import de.postlab.util.ComparableNumber;
 import lombok.Data;
 
 /**

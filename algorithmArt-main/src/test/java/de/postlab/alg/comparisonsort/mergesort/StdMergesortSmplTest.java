@@ -1,9 +1,11 @@
-package de.postlab.alg.quicksort;
+package de.postlab.alg.comparisonsort.mergesort;
 
-import de.postlab.util.ArrayPrinter;
 import de.postlab.alg.util.ArrayReader;
+import de.postlab.alg.util.ArrayPrinter;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.Random;
 
 /**
  * AlgorithmArt - A collection of algorithm implementations,
@@ -29,109 +31,113 @@ import org.testng.annotations.Test;
  * <p>
  * Initially created by michel on 18.05.15.
  */
-public class StdQuicksortSmplTest {
+public class StdMergesortSmplTest {
 
-    private StdQuicksortSmpl createSorter() {
-        return new StdQuicksortSmpl();
+    private StdMergesortSmpl createSorter() {
+        return new StdMergesortSmpl();
     }
 
     @Test()
-    public void quicksort200_random() {
+    public void mergesort100_really_random() {
+
+        // read input data
+        Random generator = new Random(1234L);
+        int c = 100;
+        int[] arr = new int[c];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = generator.nextInt(10000);
+        }
+
+        StdMergesortSmpl sorter = createSorter();
+        sorter.sort(arr);
+
+        for (int i=1; i<c; i++) {
+            Assert.assertTrue(arr[i-1] <= arr[i]);
+        }
+
+        debug_print(sorter, arr);
+    }
+
+    @Test()
+    public void mergesort200_random() {
 
         // read input data
         ArrayReader reader = new ArrayReader();
         int[] arr = reader.readFileAsInt("/sort-data/int200_random.txt");
         int c = arr.length;
 
-        StdQuicksortSmpl sorter = createSorter();
+        StdMergesortSmpl sorter = createSorter();
         sorter.sort(arr);
-
-        ArrayPrinter p = new ArrayPrinter();
-        System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
             Assert.assertTrue(arr[i-1] <= arr[i]);
         }
 
-        System.out.println("***************************************");
-        System.out.println("*********** END OF TEST ***************");
-        System.out.println("***************************************");
-        System.out.println("sorted list of "+ c +" - partition ran " + sorter.getHelper().getP_count() + " times, max depth " + sorter.getHelper().getMax_depth());
-        System.out.println();
+        debug_print(sorter, arr);
     }
 
     @Test()
-    public void quicksort2000_random() {
+    public void mergesort2000_random() {
 
         // read input data
         ArrayReader reader = new ArrayReader();
         int[] arr = reader.readFileAsInt("/sort-data/int2000_random.txt");
         int c = arr.length;
 
-        StdQuicksortSmpl sorter = createSorter();
+        StdMergesortSmpl sorter = createSorter();
         sorter.sort(arr);
-
-        ArrayPrinter p = new ArrayPrinter();
-        System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
             Assert.assertTrue(arr[i-1] <= arr[i]);
         }
 
-        System.out.println("***************************************");
-        System.out.println("*********** END OF TEST ***************");
-        System.out.println("***************************************");
-        System.out.println("sorted list of "+ c +" - partition ran " + sorter.getHelper().getP_count() + " times, max depth " + sorter.getHelper().getMax_depth());
-        System.out.println();
+        debug_print(sorter, arr);
     }
 
     @Test()
-    public void quicksort200_equal() {
+    public void mergesort200_equal() {
 
         // read input data
         ArrayReader reader = new ArrayReader();
         int[] arr = reader.readFileAsInt("/sort-data/int200_equal.txt");
         int c = arr.length;
 
-        StdQuicksortSmpl sorter = createSorter();
+        StdMergesortSmpl sorter = createSorter();
         sorter.sort(arr);
-
-        ArrayPrinter p = new ArrayPrinter();
-        System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
             Assert.assertTrue(arr[i-1] <= arr[i]);
         }
 
-        System.out.println("***************************************");
-        System.out.println("*********** END OF TEST ***************");
-        System.out.println("***************************************");
-        System.out.println("sorted list of "+ c +" - partition ran " + sorter.getHelper().getP_count() + " times, max depth " + sorter.getHelper().getMax_depth());
-        System.out.println();
+        debug_print(sorter, arr);
     }
 
     @Test()
-    public void quicksort200_sorted() {
+    public void mergesort200_sorted() {
 
         // read input data
         ArrayReader reader = new ArrayReader();
         int[] arr = reader.readFileAsInt("/sort-data/int200_sorted.txt");
         int c = arr.length;
 
-        StdQuicksortSmpl sorter = createSorter();
+        StdMergesortSmpl sorter = createSorter();
         sorter.sort(arr);
-
-        ArrayPrinter p = new ArrayPrinter();
-        System.out.println(p.printArray(arr));
 
         for (int i=1; i<c; i++) {
             Assert.assertTrue(arr[i-1] <= arr[i]);
         }
 
+    }
+
+    private void debug_print(StdMergesortSmpl sorter, int[] arr) {
         System.out.println("***************************************");
         System.out.println("*********** END OF TEST ***************");
         System.out.println("***************************************");
-        System.out.println("sorted list of "+ c +" - partition ran " + sorter.getHelper().getP_count() + " times, max depth " + sorter.getHelper().getMax_depth());
+
+        ArrayPrinter p = new ArrayPrinter();
+        System.out.println(p.printArray(arr));
+
+        System.out.println("sorted list of "+ arr.length +" - "+ sorter.getHelper().comparisons + " comparisons used, max depth " + sorter.getHelper().getMax_depth());
         System.out.println();
     }
 }
