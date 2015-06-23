@@ -1,6 +1,6 @@
-package de.postlab.alg.quicksort;
+package de.postlab.alg.comparisonsort.quicksort;
 
-import de.postlab.util.SortDebugHelper;
+import de.postlab.alg.util.SortDebugHelper;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,12 +29,12 @@ import lombok.extern.slf4j.Slf4j;
  * Initially created by michel on 17.05.15.
  */
 @Slf4j
-public class TailRecursiveQuicksortSmpl {
+public class StdQuicksortSmpl {
 
     @Getter
     private SortDebugHelper helper;
 
-    public TailRecursiveQuicksortSmpl() {
+    public StdQuicksortSmpl() {
         helper = new SortDebugHelper();
     }
 
@@ -44,16 +44,11 @@ public class TailRecursiveQuicksortSmpl {
 
     public void quicksort(int[] arr, int lo, int hi) {
         helper.depthIncrease();
-        if (log.isTraceEnabled()) log.trace("quicksort "+ lo +" - "+ hi +" - depth "+ helper.depth);
-        while( lo < hi) {
+        if (log.isTraceEnabled()) log.trace("quicksort " + lo + " - " + hi + " - depth " + helper.depth);
+        if (lo < hi) {
             int mid = partition(arr, lo, hi);
-            if (mid - lo < (hi - lo)/2) {
-                quicksort(arr, lo, mid-1);
-                lo = mid+1;
-            } else {
-                quicksort(arr, mid+1, hi);
-                hi = mid -1;
-            }
+            quicksort(arr, lo, mid-1);
+            quicksort(arr, mid + 1, hi);
         }
         helper.depthDecrease();
     }

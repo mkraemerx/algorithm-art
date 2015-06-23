@@ -1,9 +1,11 @@
-package de.postlab.alg.quicksort;
+package de.postlab.alg.comparisonsort.quicksort;
 
-import de.postlab.util.ArrayPrinter;
+import de.postlab.alg.util.ArrayPrinter;
 import de.postlab.alg.util.ArrayReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.Random;
 
 /**
  * AlgorithmArt - A collection of algorithm implementations,
@@ -25,16 +27,37 @@ import org.testng.annotations.Test;
  * GNU General Public License for more details.
  * <p>
  * You should have received a copy of the GNU General Public License
- * along with AlgorithmArt. If not, see <http://www.gnu.org/licenses/>.
+ * along with Foobar. If not, see <http://www.gnu.org/licenses/>.
  * <p>
  * Initially created by michel on 18.05.15.
  */
-public class TailRecursiveQuicksortSmplTest {
+public class StdQuicksortSmplTest {
 
     private StdQuicksortSmpl createSorter() {
         return new StdQuicksortSmpl();
     }
-    
+
+    @Test()
+    public void quicksort100_really_random() {
+
+        // read input data
+        Random generator = new Random(1234L);
+        int c = 100;
+        int[] arr = new int[c];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = generator.nextInt(10000);
+        }
+
+        StdQuicksortSmpl sorter = createSorter();
+        sorter.sort(arr);
+
+        for (int i = 1; i < c; i++) {
+            Assert.assertTrue(arr[i - 1] <= arr[i]);
+        }
+
+        debug_print(sorter, arr);
+    }
+
     @Test()
     public void quicksort200_random() {
 
@@ -46,18 +69,11 @@ public class TailRecursiveQuicksortSmplTest {
         StdQuicksortSmpl sorter = createSorter();
         sorter.sort(arr);
 
-        ArrayPrinter p = new ArrayPrinter();
-        System.out.println(p.printArray(arr));
-
-        for (int i=1; i<c; i++) {
+        for (int i = 1; i < c; i++) {
             Assert.assertTrue(arr[i - 1] <= arr[i]);
         }
 
-        System.out.println("***************************************");
-        System.out.println("*********** END OF TEST ***************");
-        System.out.println("***************************************");
-        System.out.println("sorted list of "+ c +" - partition ran " + sorter.getHelper().getP_count() + " times, max depth " + sorter.getHelper().getMax_depth());
-        System.out.println();
+        debug_print(sorter, arr);
     }
 
     @Test()
@@ -71,19 +87,13 @@ public class TailRecursiveQuicksortSmplTest {
         StdQuicksortSmpl sorter = createSorter();
         sorter.sort(arr);
 
-        ArrayPrinter p = new ArrayPrinter();
-        System.out.println(p.printArray(arr));
-
-        for (int i=1; i<c; i++) {
+        for (int i = 1; i < c; i++) {
             Assert.assertTrue(arr[i - 1] <= arr[i]);
         }
 
-        System.out.println("***************************************");
-        System.out.println("*********** END OF TEST ***************");
-        System.out.println("***************************************");
-        System.out.println("sorted list of "+ c +" - partition ran " + sorter.getHelper().getP_count() + " times, max depth " + sorter.getHelper().getMax_depth());
-        System.out.println();
+        debug_print(sorter, arr);
     }
+
     @Test()
     public void quicksort200_equal() {
 
@@ -95,18 +105,11 @@ public class TailRecursiveQuicksortSmplTest {
         StdQuicksortSmpl sorter = createSorter();
         sorter.sort(arr);
 
-        ArrayPrinter p = new ArrayPrinter();
-        System.out.println(p.printArray(arr));
-
-        for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1] <= arr[i]);
+        for (int i = 1; i < c; i++) {
+            Assert.assertTrue(arr[i - 1] <= arr[i]);
         }
 
-        System.out.println("***************************************");
-        System.out.println("*********** END OF TEST ***************");
-        System.out.println("***************************************");
-        System.out.println("sorted list of "+ c +" - partition ran " + sorter.getHelper().getP_count() + " times, max depth " + sorter.getHelper().getMax_depth());
-        System.out.println();
+        debug_print(sorter, arr);
     }
 
     @Test()
@@ -120,17 +123,22 @@ public class TailRecursiveQuicksortSmplTest {
         StdQuicksortSmpl sorter = createSorter();
         sorter.sort(arr);
 
-        ArrayPrinter p = new ArrayPrinter();
-        System.out.println(p.printArray(arr));
-
-        for (int i=1; i<c; i++) {
-            Assert.assertTrue(arr[i-1] <= arr[i]);
+        for (int i = 1; i < c; i++) {
+            Assert.assertTrue(arr[i - 1] <= arr[i]);
         }
 
+        debug_print(sorter, arr);
+    }
+
+    private void debug_print(StdQuicksortSmpl sorter, int[] arr) {
         System.out.println("***************************************");
         System.out.println("*********** END OF TEST ***************");
         System.out.println("***************************************");
-        System.out.println("sorted list of "+ c +" - partition ran " + sorter.getHelper().getP_count() + " times, max depth " + sorter.getHelper().getMax_depth());
+
+        ArrayPrinter p = new ArrayPrinter();
+        System.out.println(p.printArray(arr));
+
+        System.out.println("sorted list of " + arr.length + " - partition ran " + sorter.getHelper().getP_count() + " times, "+ sorter.getHelper().comparisons +" comparisons used, max depth " + sorter.getHelper().getMax_depth());
         System.out.println();
     }
 }

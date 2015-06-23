@@ -31,8 +31,7 @@
 
 package de.postlab.lab.alg;
 
-import de.postlab.alg.Quicksort;
-import de.postlab.util.ArrayPrinter;
+import de.postlab.alg.quicksort.StdQuicksortSmpl;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
@@ -42,25 +41,34 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class QuickSortBenchmark {
+public class StdQuicksortSmplBenchmark {
+
+    private StdQuicksortSmpl createSorter() {
+        return new StdQuicksortSmpl();
+    }
 
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.MICROSECONDS)
     @Benchmark
     public void testMethod() {
-        //int[] arr =  {1, 2, 3, 4, 5, 6, 7, 12, 9, 10};
-        int[] arr =  {1, 4, 5, 2, 18, 6, 7, 12, 9, 8};
-        //int[] arr =  {3, 3, 3, 3, 3, 3, 3, 3, 3, 3};
+        // read input data
+        Random generator = new Random(1234L);
+        int c = 100;
+        int[] arr = new int[c];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = generator.nextInt(10000);
+        }
 
-        Quicksort mouse = new Quicksort(false); // without DEBUG
-        mouse.quicksort(arr, 0, arr.length - 1);
+        StdQuicksortSmpl sorter = createSorter();
+        sorter.sort(arr);
     }
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(QuickSortBenchmark.class.getSimpleName())
+                .include(StdQuicksortSmplBenchmark.class.getSimpleName())
                 .forks(1)
                 .build();
 

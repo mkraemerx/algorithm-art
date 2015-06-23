@@ -1,4 +1,4 @@
-package de.postlab.alg.countingsort;
+package de.postlab.alg.nearlinearsort.countingsort;
 
 /**
  * AlgorithmArt - A collection of algorithm implementations,

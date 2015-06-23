@@ -1,7 +1,7 @@
-package de.postlab.alg.quicksort;
+package de.postlab.alg.comparisonsort.quicksort;
 
-import de.postlab.util.ComparableNumber;
-import de.postlab.util.SortDebugHelper;
+import de.postlab.alg.util.ComparableNumber;
+import de.postlab.alg.util.SortDebugHelper;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
