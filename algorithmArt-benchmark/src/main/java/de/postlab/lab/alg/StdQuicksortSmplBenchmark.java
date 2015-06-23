@@ -31,7 +31,7 @@
 
 package de.postlab.lab.alg;
 
-import de.postlab.alg.quicksort.StdQuicksortSmpl;
+import de.postlab.alg.comparisonsort.quicksort.StdQuicksortSmpl;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
